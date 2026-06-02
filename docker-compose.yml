@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: jip-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: jip-redis
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: jip-rabbitmq
+    ports:
+      - "5672:5672"       # Порт для коду (aio-pika)
+      - "15672:15672"     # Веб-панель (логін/пароль: guest)
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq
+
+volumes:
+  mongo_data:
+  rabbit_data:
