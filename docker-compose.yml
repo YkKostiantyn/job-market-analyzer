@@ -19,8 +19,8 @@ services:
     image: rabbitmq:3.13-management
     container_name: jip-rabbitmq
     ports:
-      - "5672:5672"       # Порт для коду (aio-pika)
-      - "15672:15672"     # Веб-панель (логін/пароль: guest)
+      - "5672:5672"
+      - "15672:15672"
     volumes:
       - rabbit_data:/var/lib/rabbitmq
 
